@@ -1,5 +1,5 @@
 import { io } from 'socket.io-client';
-import { WebSocket_URL } from '../Auxillary/urls';
+import { WebSocket_URL } from '../Auxillary/Urls';
 
 // Socket Setup
 let socket;

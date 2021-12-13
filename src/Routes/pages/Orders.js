@@ -11,7 +11,6 @@ const Orders = ({supplierID}) => {
   useEffect(() => {
     initiateSocketConnection();
     getOrders((err, data) => {
-      console.log(supplierID)
       const ordersRes = filterBySupplier(JSON.parse(data), supplierID);
       setOrders(ordersRes);
     });
