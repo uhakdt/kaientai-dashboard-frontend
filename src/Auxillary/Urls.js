@@ -1,0 +1,2 @@
+export const WebSocket_URL = process.env.REACT_APP_ENVIRONMENT === 'Development' ? process.env.REACT_APP_WEBSOCKET_URL_DEV : process.env.REACT_APP_WEBSOCKET_URL_PROD
+export const API_URL = process.env.REACT_APP_ENVIRONMENT === 'Development' ? process.env.REACT_APP_API_URL_DEV : process.env.REACT_APP_API_URL_PROD

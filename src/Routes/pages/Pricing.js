@@ -1,11 +1,12 @@
 import { H2, Button } from "@blueprintjs/core";
 import axios from "axios";
+import { API_URL } from '../../Auxillary/Urls';
 
 const Pricing = ({supplierID}) => {
   const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
   const confirmRead = () => {
-    axios.put(`http://localhost:9973/api/v1/supplier/${supplierID}/${2}`)
+    axios.put(`${API_URL}/supplier/${supplierID}/${2}`)
   }
 
   return (

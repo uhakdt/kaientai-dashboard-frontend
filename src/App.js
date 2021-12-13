@@ -3,6 +3,7 @@ import RouteNavigator from "./Routes/RouteNavigator";
 import { useAuth0 } from "@auth0/auth0-react";
 import StartupPage from "./Routes/pages/StartupPage";
 import axios from "axios";
+import { API_URL } from './Auxillary/Urls';
 
 const App = () => {
   const { isAuthenticated, isLoading, user } = useAuth0();
@@ -10,7 +11,7 @@ const App = () => {
   const [supplierID, setSupplierID] = useState(null);
 
   if(isAuthenticated) {
-    axios.post(`https://kaientai-api.herokuapp.com/api/v1/supplier/${user.email}`).then(resp => {
+    axios.post(`${API_URL}/supplier/${user.email}`).then(resp => {
       setSupplierID(resp.data.data.supplier.id);
     }).catch(err => {
       console.log(err)
