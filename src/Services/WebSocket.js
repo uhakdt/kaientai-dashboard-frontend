@@ -1,9 +1,10 @@
 import { io } from 'socket.io-client';
+import { WebSocket_URL } from '../Auxillary/urls';
 
 // Socket Setup
 let socket;
 export const initiateSocketConnection = () => {
-  socket = io(process.env.REACT_APP_WEBSOCKET_ENDPOINT, {
+  socket = io(WebSocket_URL, {
 		auth: {
 			token: 'cde'
 		},
