@@ -2,7 +2,7 @@ import { Icon, ProgressBar, Card, H3, H2, H4, H5 } from "@blueprintjs/core";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Home = ({supplierID}) => {
+const Home = ({supplierOnBoardingProgress}) => {
   const [integrateStoreBool] = useState(false);
   const [pricesBool] = useState(false);
   const [sendInventoryBool] = useState(false);

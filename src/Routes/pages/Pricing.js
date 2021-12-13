@@ -2,7 +2,7 @@ import { H2, Button } from "@blueprintjs/core";
 import axios from "axios";
 import { API_URL } from '../../Auxillary/Urls';
 
-const Pricing = ({supplierID}) => {
+const Pricing = ({supplierID, supplierOnBoardingProgress}) => {
   const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
   const confirmRead = () => {

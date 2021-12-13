@@ -1,6 +1,6 @@
 import { H2 } from "@blueprintjs/core";
 
-const Integrations = ({supplierID}) => {
+const Integrations = ({supplierID, supplierOnBoardingProgress}) => {
   const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
   return (

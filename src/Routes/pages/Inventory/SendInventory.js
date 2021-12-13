@@ -2,7 +2,7 @@ import { H2, H4, Button, Card } from "@blueprintjs/core";
 import { ProductSelector } from "../../../Components/Selectors/ProductSelector";
 import { SupplierSelector } from "../../../Components/Selectors/SupplierSelector";
 
-const SendInventory = ({supplierID}) => {
+const SendInventory = ({supplierID, supplierOnBoardingProgress}) => {
 
   const saveAndContinue = () => {
 

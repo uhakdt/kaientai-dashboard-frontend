@@ -13,22 +13,22 @@ import Customers from './pages/Customers';
 import SendInventory from './pages/Inventory/SendInventory';
 import Products from './pages/Inventory/Products';
 
-const RouteNavigator = ({supplierID}) => {
+const RouteNavigator = ({supplierID, supplierOnBoardingProgress}) => {
   return (
-    <div>      
+    <div>
       <Router>
         <Fragment>
           <div style={{ display: "flex" }}>
             <Navigator />
             <Routes>
-              <Route path='/' element={<Home supplierID={supplierID}/>}/>
+              <Route path='/' element={<Home supplierOnBoardingProgress={supplierOnBoardingProgress} />}/>
               <Route path='/orders' element={<Orders supplierID={supplierID}/>}/>
-              <Route path='/sendInventory' element={<SendInventory supplierID={supplierID}/>}/>
+              <Route path='/sendInventory' element={<SendInventory supplierID={supplierID} supplierOnBoardingProgress={supplierOnBoardingProgress} />}/>
               <Route path='/products' element={<Products supplierID={supplierID}/>}/>
               <Route path='/customers' element={<Customers supplierID={supplierID}/>}/>
-              <Route path='/pricing' element={<Pricing supplierID={supplierID}/>}/>
+              <Route path='/pricing' element={<Pricing supplierID={supplierID} supplierOnBoardingProgress={supplierOnBoardingProgress} />}/>
               <Route path='/billing' element={<Billing supplierID={supplierID}/>}/>
-              <Route path='/integrations' element={<Integrations supplierID={supplierID}/>}/>
+              <Route path='/integrations' element={<Integrations supplierID={supplierID} supplierOnBoardingProgress={supplierOnBoardingProgress} />}/>
               <Route path='/locations' element={<Locations supplierID={supplierID}/>}/>
               <Route path='/account' element={<Account supplierID={supplierID}/>}/>
             </Routes>

@@ -8,15 +8,7 @@ import { API_URL } from './Auxillary/Urls';
 const App = () => {
   const { isAuthenticated, isLoading, user } = useAuth0();
   const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-  const [supplierID, setSupplierID] = useState(null);
-
-  if(isAuthenticated) {
-    axios.post(`${API_URL}/supplier/${user.email}`).then(resp => {
-      setSupplierID(resp.data.data.supplier.id);
-    }).catch(err => {
-      console.log(err)
-    })
-  }
+  const [supplier, setSupplier] = useState(null);
 
   if(isLoading) {
     return (
@@ -26,10 +18,18 @@ const App = () => {
     )
   }
 
-  if(isAuthenticated && supplierID != null) {
+  if(isAuthenticated && supplier === null) {
+    axios.post(`${API_URL}/supplier/${user.email}`).then(resp => {
+      setSupplier(resp.data.data.supplier);
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
+  if(supplier != null) {
     return (
       <div className="App" style={{height: windowHeight}}>
-        <RouteNavigator supplierID={supplierID}></RouteNavigator>
+        <RouteNavigator supplierID={supplier.id} supplierOnBoardingProgress={supplier}></RouteNavigator>
       </div>
     )
   } else {
