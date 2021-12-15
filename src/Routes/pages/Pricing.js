@@ -1,12 +1,12 @@
 import { H2, Button } from "@blueprintjs/core";
 import axios from "axios";
-import { API_URL } from '../../Auxillary/Urls';
+import { ApiUrl } from '../../Auxillary/Urls';
 
 const Pricing = ({supplierID, supplierOnBoardingProgress}) => {
   const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
   const confirm = () => {
-    axios.put(`${API_URL}/supplier/onBoardingProgress`, {
+    axios.put(`${ApiUrl}/supplier/onBoardingProgress`, {
       supplierID: supplierID,
       step: supplierOnBoardingProgress[2]
     })

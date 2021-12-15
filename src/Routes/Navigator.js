@@ -5,7 +5,9 @@ import 'react-pro-sidebar/dist/css/styles.css';
 import { Icon } from "@blueprintjs/core";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const Navigator = () => {
+import { CustomerPortalUrl } from '../Auxillary/Urls.js';
+
+const Navigator = ({supplierID}) => {
   const { logout } = useAuth0()
   const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
@@ -28,7 +30,7 @@ const Navigator = () => {
           </SubMenu>
           <MenuItem icon={<Icon icon="people" color="white" size={30} />}><Link to="/customers">Customers</Link></MenuItem>
           <MenuItem icon={<Icon icon="calculator" color="white" size={30} />}><Link to="/pricing">Pricing</Link></MenuItem>
-          <MenuItem icon={<Icon icon="tag" color="white" size={30} />}><Link to="/billing">Billing</Link></MenuItem>
+          <MenuItem icon={<Icon icon="tag" color="white" size={30} />}><a href={CustomerPortalUrl + supplierID}>Billing</a></MenuItem>
           <MenuItem icon={<Icon icon="rocket-slant" color="white" size={30} />}><Link to="/integrations">Integrations</Link></MenuItem>
           <MenuItem icon={<Icon icon="map-marker" color="white" size={30} />}><Link to="/locations">Locations</Link></MenuItem>
         </Menu>

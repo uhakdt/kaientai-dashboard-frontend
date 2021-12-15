@@ -1,2 +1,6 @@
-export const WebSocket_URL = process.env.REACT_APP_ENVIRONMENT === 'Development' ? process.env.REACT_APP_WEBSOCKET_URL_DEV : process.env.REACT_APP_WEBSOCKET_URL_PROD
-export const API_URL = process.env.REACT_APP_ENVIRONMENT === 'Development' ? process.env.REACT_APP_API_URL_DEV : process.env.REACT_APP_API_URL_PROD
+const env = process.env.REACT_APP_ENVIRONMENT === 'Development';
+let KaientaiStripeApiUrl = env ? process.env.REACT_APP_KAIENTAI_STRIPE_API_URL_DEV : process.env.REACT_APP_KAIENTAI_STRIPE_API_URL_PROD
+export const BackendUrl = env ? process.env.REACT_APP_KAIENTAI_DASHBOARD_BACKEND_URL_DEV : process.env.REACT_APP_KAIENTAI_DASHBOARD_BACKEND_URL_PROD
+export const CustomerPortalUrl = KaientaiStripeApiUrl + '/create-customer-portal-session/'
+
+export const ApiUrl = env ? process.env.REACT_APP_API_URL_DEV : process.env.REACT_APP_API_URL_PROD

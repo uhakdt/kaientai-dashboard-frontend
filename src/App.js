@@ -3,7 +3,7 @@ import RouteNavigator from "./Routes/RouteNavigator";
 import { useAuth0 } from "@auth0/auth0-react";
 import StartupPage from "./Routes/pages/StartupPage";
 import axios from "axios";
-import { API_URL } from './Auxillary/Urls';
+import { ApiUrl } from './Auxillary/Urls';
 
 const App = () => {
   const { isAuthenticated, isLoading, user } = useAuth0();
@@ -19,7 +19,7 @@ const App = () => {
   }
 
   if(isAuthenticated && supplier === null) {
-    axios.post(`${API_URL}/supplier/${user.email}`).then(resp => {
+    axios.post(`${ApiUrl}/supplier/${user.email}`).then(resp => {
       setSupplier(resp.data.data.supplier);
     }).catch(err => {
       console.log(err)

@@ -19,7 +19,7 @@ const RouteNavigator = ({supplierID, supplierOnBoardingProgress}) => {
       <Router>
         <Fragment>
           <div style={{ display: "flex" }}>
-            <Navigator />
+            <Navigator supplierID={supplierID}/>
             <Routes>
               <Route path='/' element={<Home supplierOnBoardingProgress={supplierOnBoardingProgress} />}/>
               <Route path='/orders' element={<Orders supplierID={supplierID}/>}/>

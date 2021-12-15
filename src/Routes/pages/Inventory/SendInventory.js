@@ -2,12 +2,12 @@ import { H2, H4, Button, Card } from "@blueprintjs/core";
 import ProductSelector from "../../../Components/Selectors/ProductSelector";
 import SupplierSelector from "../../../Components/Selectors/SupplierSelector";
 import axios from "axios";
-import { API_URL } from "../../../Auxillary/Urls";
+import { ApiUrl } from "../../../Auxillary/Urls";
 
 const SendInventory = ({supplierID, supplierOnBoardingProgress}) => {
 
   const confirm = () => {
-    axios.put(`${API_URL}/supplier/onBoardingProgress`, {
+    axios.put(`${ApiUrl}/supplier/onBoardingProgress`, {
       supplierID: supplierID,
       step: supplierOnBoardingProgress[3]
     })
