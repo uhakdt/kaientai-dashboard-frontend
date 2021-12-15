@@ -7,7 +7,7 @@ export const ListOfSuppliers =
     id: 1,
     address1: "256 Meadway",
     address2: "Kitts Green",
-    city: "Birmingham1",
+    city: "Birmingham",
     county: "West Midlands",
     country: "United Kingdom",
     postcode: "B33 8NN"
@@ -26,7 +26,6 @@ export const renderSupplier = (
     <MenuItem
       active={modifiers.active}
       disabled={modifiers.disabled}
-      label={supplier.city.toString()}
       key={supplier.id}
       onClick={handleClick}
       text={highlightText(text, query)}

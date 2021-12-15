@@ -3,9 +3,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Home = ({supplierOnBoardingProgress}) => {
-  const [integrateStoreBool] = useState(false);
-  const [pricesBool] = useState(false);
-  const [sendInventoryBool] = useState(false);
+  console.log(supplierOnBoardingProgress)
+  const [integrateStoreBool] = useState(supplierOnBoardingProgress[0]);
+  const [pricesBool] = useState(supplierOnBoardingProgress[1]);
+  const [sendInventoryBool] = useState(supplierOnBoardingProgress[2]);
   
   const [bools] = useState([integrateStoreBool,pricesBool,sendInventoryBool])
   const [value] = useState((bools.reduce((total, item) => total + Number(item), 0))/3);
@@ -14,13 +15,17 @@ const Home = ({supplierOnBoardingProgress}) => {
     <div>
       <div style={{display: 'block', width: 400, padding: 30}}>
         <H2>Welcome to Kaientai</H2>
+
+        {/* PROGRESS BAR */}
         <div style={{paddingTop: 30, paddingBottom: 40}}>
           <ProgressBar animate={false} intent={"success"} value={value} stripes={false} />
         </div>
+
+        {/* PROGRESS STEPS */}
         <div>
           <div style={{paddingTop: 20, display: 'flex'}}>
             {integrateStoreBool ? <Icon icon="tick-circle" size={30}/> : <Icon icon="circle" size={30}/>}
-            <Link style={{color: "black", paddingLeft: 20, fontSize: 24, textDecoration: 'none'}} to="/">Integrate your store</Link>
+            <Link style={{color: "black", paddingLeft: 20, fontSize: 24, textDecoration: 'none'}} to="/integrations">Integrate your store</Link>
           </div>
           <div style={{paddingTop: 20, display: 'flex'}}>
             {pricesBool ? <Icon icon="tick-circle" size={30}/> : <Icon icon="circle" size={30}/>}
@@ -32,6 +37,8 @@ const Home = ({supplierOnBoardingProgress}) => {
           </div>
         </div>
       </div>
+
+      {/* SUPPORT CARD */}
       <div style={{position: 'fixed', bottom: 50, right: 50}}>
         <Card interactive={false} style={{textAlign: 'center', borderRadius: 10}}>
             <H3>We are here to support you!</H3>

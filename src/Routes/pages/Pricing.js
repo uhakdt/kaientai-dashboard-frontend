@@ -5,8 +5,11 @@ import { API_URL } from '../../Auxillary/Urls';
 const Pricing = ({supplierID, supplierOnBoardingProgress}) => {
   const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
-  const confirmRead = () => {
-    axios.put(`${API_URL}/supplier/${supplierID}/${2}`)
+  const confirm = () => {
+    axios.put(`${API_URL}/supplier/onBoardingProgress`, {
+      supplierID: supplierID,
+      step: supplierOnBoardingProgress[2]
+    })
   }
 
   return (
@@ -23,7 +26,7 @@ const Pricing = ({supplierID, supplierOnBoardingProgress}) => {
           </thead>
           <tbody>
             <tr>
-              <td rowSpan="5" style={{borderRight: '1px solid lightgrey'}}>Large Letter: 3cm height</td>
+              <td rowSpan="5" style={{borderRight: '1px solid lightgrey'}}>Tiny Parcel: 35x25x2.5</td>
               <td>0-100g</td>
               <td>0.75</td>
             </tr>
@@ -44,7 +47,7 @@ const Pricing = ({supplierID, supplierOnBoardingProgress}) => {
               <td>1.90</td>
             </tr>
             <tr>
-              <td rowSpan="2" style={{borderRight: '1px solid lightgrey'}}>Small Parcel: 35x35x16</td>
+              <td rowSpan="2" style={{borderRight: '1px solid lightgrey'}}>Small Parcel: 45x35x16</td>
               <td>0-1kg</td>
               <td>2.10</td>
             </tr>
@@ -54,7 +57,7 @@ const Pricing = ({supplierID, supplierOnBoardingProgress}) => {
               <td>2.40</td>
             </tr>
             <tr>
-              <td rowSpan="4" style={{borderRight: '1px solid lightgrey'}}>Medium Parcel: 60x46x46</td>
+              <td rowSpan="4" style={{borderRight: '1px solid lightgrey'}}>Medium Parcel: 61x46x46</td>
               <td>0-1kg</td>
               <td>3.10</td>
             </tr>
@@ -71,7 +74,7 @@ const Pricing = ({supplierID, supplierOnBoardingProgress}) => {
               <td>4.30</td>
             </tr>
             <tr>
-              <td rowSpan="2" style={{borderRight: '1px solid lightgrey'}}>Large Parcel: Any size</td>
+              <td rowSpan="2" style={{borderRight: '1px solid lightgrey'}}>Large Parcel</td>
               <td>0-10kg</td>
               <td>4.80</td>
             </tr>
@@ -81,9 +84,12 @@ const Pricing = ({supplierID, supplierOnBoardingProgress}) => {
             </tr>
           </tbody>
         </table>
-        <Button className="bp3-large" onClick={() => confirmRead()} style={{marginTop: 20}}>
-          Click here to confirm you have read this page
-        </Button>
+        {supplierOnBoardingProgress[2] === true ? (
+          <></>
+        ) : (
+          <Button className="bp3-large" onClick={() => confirm()} style={{marginTop: 20}}>
+            Click here to confirm you have read this page
+          </Button>)}
       </div>
     </div>
   )

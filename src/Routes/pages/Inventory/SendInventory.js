@@ -1,12 +1,16 @@
 import { H2, H4, Button, Card } from "@blueprintjs/core";
-import { ProductSelector } from "../../../Components/Selectors/ProductSelector";
-import { SupplierSelector } from "../../../Components/Selectors/SupplierSelector";
+import ProductSelector from "../../../Components/Selectors/ProductSelector";
+import SupplierSelector from "../../../Components/Selectors/SupplierSelector";
+import axios from "axios";
+import { API_URL } from "../../../Auxillary/Urls";
 
 const SendInventory = ({supplierID, supplierOnBoardingProgress}) => {
 
-  const saveAndContinue = () => {
-
-    console.log("test")
+  const confirm = () => {
+    axios.put(`${API_URL}/supplier/onBoardingProgress`, {
+      supplierID: supplierID,
+      step: supplierOnBoardingProgress[3]
+    })
   }
 
   return (
@@ -31,13 +35,7 @@ const SendInventory = ({supplierID, supplierOnBoardingProgress}) => {
           </div>
 
           {/* REVIEW AND SUBMIT ORDER */}
-          <div style={{ width: "100%", height: "100%", margin: 0 }}>
-            <Card>
-              <H4>Review and submit order</H4>
-              <div style={{paddingTop: 20}}><SupplierSelector></SupplierSelector> <br /></div>
-              <div style={{paddingTop: 20}}><Button onClick={() => saveAndContinue()} rightIcon="arrow-right" intent="success" text="Submit" /></div>
-            </Card>
-          </div>
+          <div style={{paddingTop: 20}}><Button onClick={() => confirm()} rightIcon="arrow-right" intent="success" text="Submit" /></div>
 
         </div>
       </div>

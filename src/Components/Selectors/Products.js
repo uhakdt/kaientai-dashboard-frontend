@@ -5,23 +5,23 @@ export const ListOfProducts =
 [
   { 
     id: 1,
-    supplierID: 1,
-    title: "1",
-    imageUrl: "1",
-    price: 1,
-    stock: 1,
-    extID: "1",
-    weightInGrams: 1,
+    supplierID: 3.14159,
+    title: "Title1",
+    imageUrl: "ImageUrl1",
+    price: 1.314,
+    stock: 19,
+    extID: "extID1",
+    weightInGrams: 119,
   },
   { 
     id: 2,
-    supplierID: 2,
-    title: "2",
-    imageUrl: "2",
-    price: 2,
-    stock: 2,
-    extID: "2",
-    weightInGrams: 2,
+    supplierID: 3.14,
+    title: "Title2",
+    imageUrl: "ImageUrl2",
+    price: 2.314,
+    stock: 29,
+    extID: "extID2",
+    weightInGrams: 229,
   }
 ].map((m, index) => ({ ...m, rank: index + 1 }));
 
@@ -37,7 +37,6 @@ export const renderProduct = (
     <MenuItem
       active={modifiers.active}
       disabled={modifiers.disabled}
-      label={product.title.toString()}
       key={product.id}
       onClick={handleClick}
       text={highlightText(text, query)}

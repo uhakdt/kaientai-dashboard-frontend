@@ -29,7 +29,7 @@ const App = () => {
   if(supplier != null) {
     return (
       <div className="App" style={{height: windowHeight}}>
-        <RouteNavigator supplierID={supplier.id} supplierOnBoardingProgress={supplier}></RouteNavigator>
+        <RouteNavigator supplierID={supplier.id} supplierOnBoardingProgress={supplier.onBoardingProgress}></RouteNavigator>
       </div>
     )
   } else {
