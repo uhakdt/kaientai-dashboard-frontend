@@ -13,7 +13,7 @@ import Customers from './pages/Customers';
 import SendInventory from './pages/Inventory/SendInventory';
 import Products from './pages/Inventory/Products';
 
-const RouteNavigator = ({supplierID, supplierOnBoardingProgress}) => {
+const RouteNavigator = ({supplierID, supplierOnBoardingProgress, shopifySession}) => {
   return (
     <div>
       <Router>
@@ -21,7 +21,7 @@ const RouteNavigator = ({supplierID, supplierOnBoardingProgress}) => {
           <div style={{ display: "flex" }}>
             <Navigator supplierID={supplierID}/>
             <Routes>
-              <Route path='/' element={<Home supplierOnBoardingProgress={supplierOnBoardingProgress} />}/>
+              <Route path='/' element={<Home supplierOnBoardingProgress={supplierOnBoardingProgress} shopifySession={shopifySession}/>}/>
               <Route path='/orders' element={<Orders supplierID={supplierID}/>}/>
               <Route path='/sendInventory' element={<SendInventory supplierID={supplierID} supplierOnBoardingProgress={supplierOnBoardingProgress} />}/>
               <Route path='/products' element={<Products supplierID={supplierID}/>}/>
