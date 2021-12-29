@@ -5,7 +5,7 @@ import 'react-pro-sidebar/dist/css/styles.css';
 import { Icon } from "@blueprintjs/core";
 import { useAuth0 } from "@auth0/auth0-react";
 
-import { CustomerPortalUrl } from '../Auxillary/Urls.js';
+import { CustomerPortalUrl } from '../Auxillary/GlobalVariables.js';
 
 const Navigator = ({supplierID}) => {
   const { logout } = useAuth0()

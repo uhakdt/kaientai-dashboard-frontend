@@ -1,5 +1,5 @@
 import { io } from 'socket.io-client';
-import { BackendUrl } from '../Auxillary/Urls';
+import { BackendUrl } from '../Auxillary/GlobalVariables';
 
 // Socket Setup
 let socket;

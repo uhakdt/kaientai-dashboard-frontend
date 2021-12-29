@@ -2,7 +2,7 @@ import { H2, H4, Button, Card } from "@blueprintjs/core";
 import ProductSelector from "../../../Components/Selectors/ProductSelector";
 import SupplierSelector from "../../../Components/Selectors/SupplierSelector";
 import axios from "axios";
-import { ApiUrl } from "../../../Auxillary/Urls";
+import { ApiUrl } from "../../../Auxillary/GlobalVariables";
 
 const SendInventory = ({supplierID, supplierOnBoardingProgress}) => {
 
