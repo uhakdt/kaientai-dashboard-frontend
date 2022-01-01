@@ -1,10 +1,10 @@
 import { io } from 'socket.io-client';
-import { BackendUrl } from '../Auxillary/GlobalVariables';
+import { WebsocketUrl } from '../Auxillary/GlobalVariables';
 
 // Socket Setup
 let socket;
 export const initiateSocketConnection = () => {
-  socket = io(BackendUrl, {
+  socket = io(WebsocketUrl, {
 		auth: {
 			token: 'cde'
 		},

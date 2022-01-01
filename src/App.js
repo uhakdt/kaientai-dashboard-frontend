@@ -3,7 +3,7 @@ import RouteNavigator from "./Routes/RouteNavigator";
 import { useAuth0 } from "@auth0/auth0-react";
 import StartupPage from "./Routes/pages/StartupPage";
 import axios from "axios";
-import { ApiUrl, BackendUrl } from './Auxillary/Urls';
+import { ApiUrl, HostUrlParams } from './Auxillary/GlobalVariables';
 
 const App = () => {
   const { isAuthenticated, isLoading, user } = useAuth0();
@@ -20,30 +20,21 @@ const App = () => {
   }
 
   if(isAuthenticated && supplier === null) {
-    axios.post(`${ApiUrl}/supplier/${user.email}`).then(resp => {
-      axios.post(`${ApiUrl}/shopifySession/checkExpiry`, {
-        supplierID: resp.data.data.supplier.id,
-        domain: null
+    axios.get(`${ApiUrl}/supplier/email/${user.email}`).then(resp => {
+      axios.post(`${ApiUrl}/supplier/shopifySession`, {
+        domain: HostUrlParams.get('shop'),
+        shopifySession: HostUrlParams.get('host')
       })
-      .then(resp => {
-        console.log(resp.status)
-        if(resp.status === 200) {
-          setShopifySession(resp.data.data.shopifySession)
-        } else if(resp.status === 204) {
-          console.log("ID did not match.")
-        }
+      .then(respSession => {
+        setShopifySession(respSession.data.data.supplier.shopifySession);
       })
-      .catch(error => { 
-        console.log(error);
-        window.location.href = `${BackendUrl}`;
-      })
-
+      .catch(error => { console.log(error) });
       setSupplier(resp.data.data.supplier);
     })
     .catch(error => { console.log(error) })
   }
 
-  if(supplier != null) {
+  if(supplier != null && shopifySession != null) {
     return (
       <div className="App" style={{height: windowHeight}}>
         <RouteNavigator supplierID={supplier.id} supplierOnBoardingProgress={supplier.onBoardingProgress} shopifySession={shopifySession}></RouteNavigator>
